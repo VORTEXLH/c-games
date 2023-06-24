@@ -1,0 +1,74 @@
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+
+using namespace std;
+int getcomputer(){
+    return (rand() % 3 +1);
+}
+int main()
+{
+    srand ( time(0));
+
+
+    int cont=0, contn=0;
+    int c;
+    do{
+        cout<<"rock(1), paper(2) ou scissors(3) || stop(0)"<<endl;
+        cout<<cont<< " --- "<< contn<<endl;
+        cin>> c;
+        switch (c) {
+            case 1:{
+                int i= getcomputer();
+                if (i == 1) {
+                    cout << "Tie" << endl;
+                } else if (i == 2) {
+                    cout << "rock-->paper" << endl;
+                    contn++;
+                } else if (i == 3) {
+                    cout << "rock<--scissors" << endl;
+                    cont++;
+                }
+                break;}
+            case 2:{
+                int i= getcomputer();
+                if (i == 1) {
+                    cout << "paper<--rock" << endl;
+                    cont++;
+                } else if (i == 2) {
+                    cout << "Tie" << endl;
+
+                } else if (i == 3) {
+                    cout << "papel-->scissors" << endl;
+                    contn++;
+                }
+                break;}
+            case 3:{
+                int i= getcomputer();
+                if (i == 1) {
+                    cout << "scissors-->rock" << endl;
+                    contn++;
+                }
+                else if (i == 2) {
+                    cout << "scissors<--paper" << endl;
+                    cont++;
+                }
+                else if (i == 3) {
+                    cout << "Tie" << endl;
+                }
+                break;}
+                case 0:{
+                    return 0;
+                }
+                default:{
+                    cout<<"Not valid. Try again"<<endl;
+                }
+        }
+    }while(c != 0 && cont < 3 && contn < 3);
+    if(cont >= 3){
+		cout<< "You win!\n";
+	}
+	else{
+		cout<<"You lose\n";
+	}
+}
